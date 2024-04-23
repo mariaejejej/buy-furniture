@@ -1,11 +1,12 @@
 import { Box, Button, FormControl, Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import styles from './login.module.scss'
+import { useNavigate } from 'react-router-dom'
 export const Login = () => {
-
+    let navigate = useNavigate() 
 
     const [formValues, setFormValues] = useState<string[]>([])
-    console.log(formValues)
+
     const onChangeTextField = (event, index) => {
         setFormValues((prevValue) => {
             const newValue = [...prevValue]
@@ -13,9 +14,30 @@ export const Login = () => {
             return newValue
 
         })
-
-
     }
+    const onSubmitt = () => {
+
+        const url = `https://jsonplaceholder.typicode.com/users?username=${formValues[0]}`
+
+        fetch(url)
+            .then((response) => response.json())
+            .then((json) => {
+                if (json.length === 1) {
+                    alert(`All good ${json[0].email}`)
+                    navigate("/home")
+                }
+                else {
+                    alert(`All bad`)
+                    console.log(json);
+                }
+
+
+
+            })
+
+
+}
+
     return (
         <Grid
             container
@@ -45,22 +67,7 @@ export const Login = () => {
                         type="password"
                         required
                         onChange={(event) => onChangeTextField(event, 1)}
-                    /><Button onClick={() => {
-
-                        fetch('https://jsonplaceholder.typicode.com/posts', {
-                            method: 'POST',
-                            body: JSON.stringify({
-                                title: formValues[0],
-                                body:  formValues[1],
-                                userId: 1,
-                            }),
-                            headers: {
-                                'Content-type': 'application/json; charset=UTF-8',
-                            },
-                        })
-                            .then((response) => response.json())
-                            .then((json) => console.log(json));
-                    }}
+                    /><Button onClick={onSubmitt}
 
                     > Log in </Button>
                 </div>
