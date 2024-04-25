@@ -1,4 +1,23 @@
-.formContainer{
-    display:flex;
-    flex-direction: column
+.formContainer {
+    display: flex;
+
+    flex-direction: column;
+
+    &.Button {
+        margin: 8px
+    }
+}
+
+
+.formButton.formButton {
+    margin: 8px;
+
+    &.MuiButtonBase-root {
+        margin: 8px
+    }
+
+    &.MuiButtonBase-root-MuiButton-root {
+        margin: 8px
+    }
+
 }

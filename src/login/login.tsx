@@ -1,9 +1,10 @@
-import { Box, Button, FormControl, Grid, TextField } from '@mui/material'
+import { Box, Button, FormControl, Grid, Link, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import styles from './login.module.scss'
 import { useNavigate } from 'react-router-dom'
+import classNames from 'classnames'
 export const Login = () => {
-    let navigate = useNavigate() 
+    let navigate = useNavigate()
 
     const [formValues, setFormValues] = useState<string[]>([])
 
@@ -36,7 +37,7 @@ export const Login = () => {
             })
 
 
-}
+    }
 
     return (
         <Grid
@@ -67,9 +68,21 @@ export const Login = () => {
                         type="password"
                         required
                         onChange={(event) => onChangeTextField(event, 1)}
-                    /><Button onClick={onSubmitt}
+                    />
+                    <Button
+                        onClick={onSubmitt}
+                        variant="contained"
+                        classes={{root: classNames(styles.formButton)}}
+                        disabled={!(formValues.length===2)}
+                        
+                        >
+                           
+                        Log in
+                    </Button>
 
-                    > Log in </Button>
+                    <Link href="#" underline="always">
+                        {'I dont have an account'}
+                    </Link>
                 </div>
             </FormControl>
 
