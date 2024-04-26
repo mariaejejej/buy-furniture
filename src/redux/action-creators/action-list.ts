@@ -1,0 +1,2 @@
+export const SET_IMG_LIST = 'SET_IMG_LIST';
+export const SET_IMG_LIST_FILTER = 'SET_IMG_LIST_FILTER'

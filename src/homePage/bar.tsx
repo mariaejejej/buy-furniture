@@ -12,12 +12,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { InputBase } from '@mui/material';
-import styles from './search/searchBar.module.scss'
 import { Logo } from './logo/logo.tsx';
 import { ImageListC } from './imageList/imageList.tsx';
+import { SearchBar } from './search/searchBar.tsx';
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -60,16 +59,7 @@ export const Bar = () => {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Logo isLaptop />
-                    <div className={styles.searchBar}>
-                        <div className={styles.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            className={styles.searchInput}
-                        />
-                    </div>
+                    <SearchBar />
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"

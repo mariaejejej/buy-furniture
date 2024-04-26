@@ -58,7 +58,7 @@ export const Login = () => {
                         id="outlined-required"
                         label="User Name"
                         type="email"
-
+                        classes={{root: classNames(styles.formInput)}}
                         onChange={(event) => onChangeTextField(event, 0)}
                     />
 
@@ -67,6 +67,7 @@ export const Login = () => {
                         label="Password"
                         type="password"
                         required
+                        classes={{root: classNames(styles.formInput)}}
                         onChange={(event) => onChangeTextField(event, 1)}
                     />
                     <Button

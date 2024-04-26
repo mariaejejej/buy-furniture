@@ -3,21 +3,15 @@
 
     flex-direction: column;
 
-    &.Button {
-        margin: 8px
-    }
 }
 
+.formInput.formInput {
+
+    border-radius: 8px;
+
+}
 
 .formButton.formButton {
     margin: 8px;
-
-    &.MuiButtonBase-root {
-        margin: 8px
-    }
-
-    &.MuiButtonBase-root-MuiButton-root {
-        margin: 8px
-    }
 
 }
