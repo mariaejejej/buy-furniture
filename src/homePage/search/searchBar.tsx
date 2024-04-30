@@ -2,13 +2,20 @@ import React from 'react'
 import styles from './searchBar.module.scss'
 import SearchIcon from '@mui/icons-material/Search';
 import { InputBase } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetImgListFiltered, setImgListFiltered } from '../../redux/action-creators/imgList.ts';
 
 export const SearchBar = () => {
-    const imgList = useSelector((state) => state.imgListFiltered)
+    const imgList = useSelector((state) => state.imgList)
+    const dispatch = useDispatch()
+
     const searchImgList = (event: React.ChangeEvent) => {
         const newValue = event.target.value
-        imgList.filter((img) => img.title.contains(newValue))
+        if (newValue !== '') {
+            const newList = imgList.filter((img) => img.title.includes(newValue))
+            dispatch(setImgListFiltered(newList))
+        }
+        else dispatch(resetImgListFiltered())
     }
     return (
         <div className={styles.searchBar}>
