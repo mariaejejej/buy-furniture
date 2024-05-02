@@ -12,7 +12,7 @@ export const SearchBar = () => {
     const searchImgList = (event: React.ChangeEvent) => {
         const newValue = event.target.value
         if (newValue !== '') {
-            const newList = imgList.filter((img) => img.title.includes(newValue))
+            const newList = imgList.filter((img) => img.title.toLowerCase().includes(newValue.toLowerCase()))
             dispatch(setImgListFiltered(newList))
         }
         else dispatch(resetImgListFiltered())

@@ -21,7 +21,6 @@ export const LoginContainer = () => {
                     <CardHeader
                         className={styles.cardHeader}
                         title="Login"
-                        subheader={new Date().toDateString()}
                     />
                     <CardContent>
                         <Login />
