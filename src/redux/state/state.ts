@@ -1,4 +1,12 @@
 
+export type user ={
+  id: string,
+  name: string,
+  username: string,
+  email: string,
+  password: string,
+}
+
 export type imgItem = {
   img: string,
     title: string,
@@ -10,7 +18,7 @@ export type imgItem = {
 export type state = {
   imgList: imgItem[],
   imgListFiltered: imgItem[],
-  users: []
+  users: user[]
 }
 const itemData = [
   {

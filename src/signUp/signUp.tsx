@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { state } from '../redux/state/state'
 import { addUser } from '../redux/action-creators/users.ts'
 import { useNavigate } from 'react-router-dom'
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 type formValues = {
     value: string,
@@ -26,7 +27,7 @@ export const SignUp = () => {
     const [formValues, setFormValues] = useState<formValues[]>(fillForm())
     let navigate = useNavigate()
 
-    const users = useSelector((state:state) => state.users)
+    const users = useSelector((state: state) => state.users)
     const dispatch = useDispatch()
     console.log(formValues)
     const onChangeTextField = (event, index) => {
@@ -47,50 +48,52 @@ export const SignUp = () => {
 
 
     const handleSubmit = (event) => {
-        const id =Math.floor(Math.random() * 100)
+        const id = Math.floor(Math.random() * 100)
         fetch('https://jsonplaceholder.typicode.com/users', {
             method: 'POST',
             body: JSON.stringify({
                 username: formValues[0].value,
-              body: 'bar',
-              userId: id,
+                password: formValues[2].value,
+                email: formValues[1].value,
+                userId: id,
             }),
             headers: {
-              'Content-type': 'application/json; charset=UTF-8',
+                'Content-type': 'application/json; charset=UTF-8',
             },
-          })
+        })
             .then((response) => response.json())
-            .then((json) => console.log(json)); 
+            .then((json) => console.log(json));
 
-        
+
         const newUser = {
             id,
             name: formValues[0].value,
             username: formValues[0].value,
             email: formValues[1].value,
+            password: formValues[2].value,
         }
 
         dispatch(addUser(newUser))
         event.preventDefault();
-        navigate("/")
+        navigate("/", { replace: true })
     }
     return (
         <Grid
             container
             justifyContent={'center'}
         >
-
+            
             <FormControl
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '25ch' },
                 }}
                 noValidate
-               // onSubmit={handleSubmit}
             >
                 <div className={styles.formContainer}>
                     <TextField
                         required
+                        color="secondary"
                         id="outlined-required"
                         label="UserName"
                         classes={{ root: classNames(styles.formInput) }}
@@ -106,6 +109,7 @@ export const SignUp = () => {
                         required
                         id="outlined-required"
                         label="Email"
+                        color="secondary"
                         type="email"
                         classes={{ root: classNames(styles.formInput) }}
                         onChange={(event) => onChangeTextField(event, 1)}
@@ -127,7 +131,7 @@ export const SignUp = () => {
                             pattern: "[A-Za-z ]+",
                         }}
                         error={formValues[2].error}
-
+                        color="secondary"
                         helperText={
                             formValues[2].error ? "Please enter your name (letters and spaces only)" : ""
                         }
@@ -137,12 +141,17 @@ export const SignUp = () => {
                         variant="contained"
                         classes={{ root: classNames(styles.formButton) }}
                         disabled={!formValues.every((value) => notEmptyValue(value.value) && !value.error)}
-                       // type="submit"
+                        color="secondary"
                     >
 
                         Sign up
                     </Button>
+                    <Link component={ReactRouterLink} to="/" underline="always" color="secondary" >
+                        <div className={styles.link}>
+                            {"Already have an account"}
+                        </div>
 
+                    </Link>
 
                 </div>
             </FormControl>

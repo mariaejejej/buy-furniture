@@ -1,17 +1,21 @@
-import { Box, Button, FormControl, Grid, Link, TextField } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Alert,  Button, FormControl, Grid, IconButton, Link, TextField } from '@mui/material'
+import React, { useState } from 'react'
 import styles from './login.module.scss'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
-import { useDispatch, useSelector } from 'react-redux'
-import { setUsers } from '../redux/action-creators/users.ts'
-import { state } from '../redux/state/state.ts'
+import {  useSelector } from 'react-redux'
+import { state, user } from '../redux/state/state.ts'
+import { Link as ReactRouterLink } from 'react-router-dom';
+
+import CloseIcon from '@mui/icons-material/Close';
+
 export const Login = () => {
     let navigate = useNavigate()
-    const dispatch = useDispatch()
-    const users = useSelector((state: state) => state.users)
+    const users: user[] = useSelector((state: state) => state.users)
 
     const [formValues, setFormValues] = useState<string[]>([])
+    const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false)
+
 
     const onChangeTextField = (event, index) => {
         setFormValues((prevValue) => {
@@ -22,40 +26,13 @@ export const Login = () => {
         })
     }
     const onSubmitt = () => {
-
-        //     const url = `https://jsonplaceholder.typicode.com/users?username=${formValues[0]}`
-
-        //     fetch(url)
-        //         .then((response) => response.json())
-        //         .then((json) => {
-        //             if (json.length === 1) {
-        //                 alert(`All good ${json[0].email}`)
-        //                 navigate("/home")
-        //             }
-        //             else {
-        //                 alert(`All bad`)
-        //                 console.log(json);
-        //             }
-
-
-
-        //         })
-        const found = users.find((user) => user.username === formValues[0])
+        const found = users.find((user) => user.username === formValues[0] && user.password === formValues[1])
         if (found) {
-            alert(`All good ${formValues[0]}`)
+            setInvalidCredentials(false)
             navigate("/home")
         }
-        else {
-            alert(`All bad `)
-        }
-
+        else setInvalidCredentials(true)
     }
-
-
-
-
-
-
 
 
     return (
@@ -63,11 +40,11 @@ export const Login = () => {
             container
             justifyContent={'center'}
         >
-
             <FormControl
                 component="form"
                 sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    '& .MuiTextField-root': { m: 1, width: '25ch' }
+                    
                 }}
                 noValidate
             >
@@ -76,6 +53,7 @@ export const Login = () => {
                         required
                         id="outlined-required"
                         label="User Name"
+                        color="secondary"
                         type="email"
                         classes={{ root: classNames(styles.formInput) }}
                         onChange={(event) => onChangeTextField(event, 0)}
@@ -85,28 +63,49 @@ export const Login = () => {
                         id="password"
                         label="Password"
                         type="password"
+                        color="secondary"
                         required
                         classes={{ root: classNames(styles.formInput) }}
                         onChange={(event) => onChangeTextField(event, 1)}
                     />
+                    {invalidCredentials &&
+                        <Alert
+                        severity="error"
+                        className={styles.alert}
+                            action={
+                                <IconButton
+                                    aria-label="close"
+                                    color="inherit"
+                                    size="small"
+                                    onClick={() => {
+                                        setInvalidCredentials(false);
+                                    }}
+                                >
+                                    <CloseIcon fontSize="inherit" />
+                                </IconButton>
+                            }
+                            sx={{ mb: 2 }}
+                        >
+                            Invalid UserName or password
+                        </Alert>
+
+                    }
                     <Button
                         onClick={onSubmitt}
                         variant="contained"
+                        color="secondary"
                         classes={{ root: classNames(styles.formButton) }}
                         disabled={!(formValues.length === 2)}
 
                     >
-
                         Log in
                     </Button>
 
-                    <Link href="/sign-up" underline="always">
+                    <Link component={ReactRouterLink} to="/sign-up" underline="always" color="secondary">
                         {"I don't have an account"}
                     </Link>
                 </div>
             </FormControl>
-
         </Grid>
-
     )
 }
