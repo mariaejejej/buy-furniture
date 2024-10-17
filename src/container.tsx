@@ -1,21 +1,23 @@
-import { Card, CardContent, CardHeader, Container as ContainerMUI, Toolbar } from '@mui/material'
+import { Card, CardContent, CardHeader, Toolbar } from '@mui/material'
 import React from 'react'
 import { Logo } from './homePage/logo/logo.tsx'
 import styles from './login/loginContainer.module.scss'
-import classNames from 'classnames'
+import stylesContainer from './container.module.scss'
+
 
 export const Container = ({children, title}) => {
     return (
         <>
-            <ContainerMUI maxWidth="xl" classes={{ root: classNames(styles.logo) }}>
+           <div  className={stylesContainer.logoContainer}>
                 <Toolbar disableGutters>
-                    <Logo isLaptop />
+                    <Logo/>
                 </Toolbar>
-            </ContainerMUI>
+            </div>
             <div style={{
                 display: 'grid',
                 placeItems: 'center',
                 height: '80vh',
+                borderTop: 'solid 1px #d1d1d6'
             }}>
                   <Card
                     style={{

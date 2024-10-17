@@ -18,7 +18,8 @@ export type imgItem = {
 export type state = {
   imgList: imgItem[],
   imgListFiltered: imgItem[],
-  users: user[]
+  users: user[],
+  userLoged?: user
 }
 const itemData = [
   {
@@ -164,5 +165,6 @@ const itemData = [
 export const getDefaultState = (): state => ({
   imgList: itemData,
   imgListFiltered: itemData,
-  users: []
+  users: [],
+  userLoged: undefined
 })

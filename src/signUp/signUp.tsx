@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import React, { useState } from 'react'
 import styles from '../login/login.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { state } from '../redux/state/state'
 import { addUser } from '../redux/action-creators/users.ts'
 import { useNavigate } from 'react-router-dom'
 import { Link as ReactRouterLink } from 'react-router-dom';
@@ -27,9 +26,8 @@ export const SignUp = () => {
     const [formValues, setFormValues] = useState<formValues[]>(fillForm())
     let navigate = useNavigate()
 
-    const users = useSelector((state: state) => state.users)
     const dispatch = useDispatch()
-    console.log(formValues)
+
     const onChangeTextField = (event, index) => {
         setFormValues((prevValue) => {
             const newValue = [...prevValue]
@@ -104,7 +102,6 @@ export const SignUp = () => {
                             pattern: "[A-Za-z ]+",
                         }}
                     />
-
                     <TextField
                         required
                         id="outlined-required"
@@ -119,7 +116,6 @@ export const SignUp = () => {
                             type: "email",
                         }}
                     />
-
                     <TextField
                         id="password"
                         label="Password"
@@ -143,19 +139,15 @@ export const SignUp = () => {
                         disabled={!formValues.every((value) => notEmptyValue(value.value) && !value.error)}
                         color="secondary"
                     >
-
                         Sign up
                     </Button>
                     <Link component={ReactRouterLink} to="/" underline="always" color="secondary" >
                         <div className={styles.link}>
                             {"Already have an account"}
                         </div>
-
                     </Link>
-
                 </div>
             </FormControl>
-
         </Grid>
     )
 }

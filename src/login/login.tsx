@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 import styles from './login.module.scss'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
-import {  useSelector } from 'react-redux'
+import {  useDispatch, useSelector } from 'react-redux'
 import { state, user } from '../redux/state/state.ts'
 import { Link as ReactRouterLink } from 'react-router-dom';
+import { setUserLoged } from '../redux/action-creators/userLoged.ts'
 
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -16,6 +17,7 @@ export const Login = () => {
     const [formValues, setFormValues] = useState<string[]>([])
     const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false)
 
+    const dispatch = useDispatch()
 
     const onChangeTextField = (event, index) => {
         setFormValues((prevValue) => {
@@ -29,7 +31,8 @@ export const Login = () => {
         const found = users.find((user) => user.username === formValues[0] && user.password === formValues[1])
         if (found) {
             setInvalidCredentials(false)
-            navigate("/home")
+            dispatch(setUserLoged(found))
+            navigate("/")
         }
         else setInvalidCredentials(true)
     }
