@@ -1,0 +1,20 @@
+
+.menu {
+    margin-left: 40px;
+}
+
+.menuButton.menuButton {
+    color: #4b4753;
+    font-weight: bold;
+
+    &:is(.selected){
+        color:#9c27b0;
+        text-decoration: solid;
+    }
+
+    &:hover {
+        background-color: rgb(25 118 210 / 13%);
+
+    }
+
+}

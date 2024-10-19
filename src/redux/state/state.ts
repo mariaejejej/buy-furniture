@@ -1,5 +1,5 @@
 
-export type user ={
+export type user = {
   id: string,
   name: string,
   username: string,
@@ -9,10 +9,11 @@ export type user ={
 
 export type imgItem = {
   img: string,
-    title: string,
-    author: string,
-    ratingValue: number,
-    price: string
+  title: string,
+  author: string,
+  category: string,
+  ratingValue: number,
+  price: string
 };
 
 export type state = {
@@ -21,146 +22,105 @@ export type state = {
   users: user[],
   userLoged?: user
 }
-const itemData = [
+const itemData:imgItem[]  = [
   {
     img: 'https://assets.wfcdn.com/im/32285462/resize-h800-w800%5Ecompr-r85/2477/247746995/Isenbert+6+-+Drawer+Dresser.jpg',
     title: 'Dresser',
     author: '@bkristastucchio',
+    category: 'bedroom',
     ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://iconbydesign.com/cdn/shop/files/Mosman-MagnusDiningRound14-1.jpg?v=1710966693',
+    title: 'Round Dining Table',
+    author: '@bkristastucchio',
+    category: 'dining',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://cdn.shopify.com/s/files/1/2268/9819/files/amelia-whitewash-dining-table-set-6-seater-freya-oatmeal-carver-chairs-with-whitewash-oak-legs-laura-james-1.jpg?v=1718020921',
+    title: 'Square Dining Table',
+    author: '@bkristastucchio',
+    category: 'dining',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://www.branchfurniture.com/cdn/shop/files/baltic221new.jpg?v=1717687130',
+    title: 'Ergonomic Chair',
+    author: '@bkristastucchio',
+    category: 'office',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://m.media-amazon.com/images/I/81Foum06q6L._AC_UF894,1000_QL80_.jpg',
+    title: 'Modern Book Shelf',
+    author: '@bkristastucchio',
+    category: 'office',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+
+  {
+    img: 'https://www.mocka.com.au/cdn/shop/files/T03710_Square_01.jpg?v=1717075093',
+    title: 'Chair',
+    author: '@bkristastucchio',
+    category: 'office',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://m.media-amazon.com/images/I/81zYWf9m3CL._AC_UF894,1000_QL80_.jpg',
+    title: 'Book Shelve',
+    author: '@bkristastucchio',
+    category: 'office',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://westcoastmodernla.com/cdn/shop/products/IMG_7948-rotated_f21f9e48-79e2-44ac-a071-635aecc7f872.jpg?v=1684339755',
+    title: 'Modern Chair',
+    author: '@bkristastucchio',
+    category: 'office',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://beautifulbedco.com/cdn/shop/products/beautiful-bed-company-simply-scandinavian-4-night-stand-white-1_2_900x.jpg?v=1696940513',
+    title: 'White Nightstand',
+    author: '@bkristastucchio',
+    category: 'bedroom',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+  {
+    img: 'https://i5.walmartimages.com/seo/Better-Homes-Gardens-Juliet-Nightstand-with-USB-Light-Honey-Finish_795fda9c-e4c7-4aa9-9ee4-dd755cc83029.b1a21dfd75559a51047831af17b8c7d7.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF',
+    title: 'Wood Nightstand',
+    author: '@bkristastucchio',
+    category: 'bedroom',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
+  },
+
+  {
+    img: 'https://m.media-amazon.com/images/I/8191zaQ4qIL.jpg',
+    title: 'Black Dresser',
+    author: '@bkristastucchio',
+    category: 'bedroom',
+    ratingValue: Math.round(Math.random() * 5),
+    price: (Math.random() * 1000).toFixed(2)
   },
   {
     img: 'https://assets.wfcdn.com/im/54725037/resize-h800-w800%5Ecompr-r85/2410/241018628/Tianna+Diamond+Tufted+Upholstered+Bed+Frame+with+Wingback+Headboard.jpg',
     title: 'Bed',
     author: '@rollelflex_graphy726',
+    category: 'bedroom',
     ratingValue: Math.round(Math.random() * 5),
-    price: (Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-    author: '@helloimnik',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-    title: 'Breakfast',
-    author: '@bkristastucchio',
-    ratingValue: Math.round(Math.random() * 5),
-    price: 
-
-      (Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-    author: '@rollelflex_graphy726',
-    ratingValue: Math.round(Math.random() * 5),
-    price: 
-
-     ( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-    author: '@helloimnik',
-    ratingValue: Math.round(Math.random() * 5),
-    price: 
-
-      (Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-    title: 'Breakfast',
-    author: '@bkristastucchio',
-    ratingValue: Math.round(Math.random() * 5),
-    price: 
-
-      (Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-    author: '@rollelflex_graphy726',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( 
-
-      Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-    author: '@helloimnik',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( 
-
-      Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-    title: 'Coffee',
-    author: '@nolanissac',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-    title: 'Hats',
-    author: '@hjrc33',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-    title: 'Honey',
-    author: '@arwinneil',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-    title: 'Basketball',
-    author: '@tjdragotta',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-    title: 'Fern',
-    author: '@katie_wasserman',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-    title: 'Mushrooms',
-    author: '@silverdalex',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-    title: 'Tomato basil',
-    author: '@shelleypauls',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-    title: 'Sea star',
-    author: '@peterlaster',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-    title: 'Bike',
-    author: '@southside_customs',
-    ratingValue: Math.round(Math.random() * 5),
-    price:( Math.random() * 1000).toFixed(2) 
-  },
+    price: (Math.random() * 1000).toFixed(2)
+  }
 ];
 export const getDefaultState = (): state => ({
   imgList: itemData,
