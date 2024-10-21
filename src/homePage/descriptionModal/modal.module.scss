@@ -1,0 +1,91 @@
+// stylelint-disable
+
+$lg-modal-desktop-width: 750px;
+$modal-border-radius: 3px;
+
+.modalRoot.modalRoot {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 25%;
+    right: 25%;
+
+}
+
+.modalHeader {
+    border-radius: 2px 2px 0px 0px;
+    align-items: center;
+    border-bottom: 1px solid hsl(0deg 0% 89.8%);
+    background-color: #fff;
+    display: flex;
+    font-weight: normal;
+    flex-wrap: nowrap;
+}
+
+.modalTitle {
+    flex: 2 1 auto;
+    margin: 0;
+    overflow: hidden;
+    line-height: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.modalCloseButton {
+    align-self: center;
+    flex: 0 0 auto;
+    cursor: pointer;
+}
+
+.modalBody {
+
+    background-color: #fff;
+    border-radius: 0px 0px 2px 2px;
+
+    .bodyContent {
+        margin-top: 30px;
+        display: flex;
+
+
+        .imgDescription {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10%;
+            .rating {
+                margin-top: 5px;
+            }
+
+            .price {
+                font-weight: bold;
+                font-size: 25px;
+            }
+
+            .quantityAddToCart {
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+            }
+
+        }
+    }
+}
+
+
+
+.addToCart.addToCart {
+
+    border-radius: 10px;
+    background-color: rgb(103 58 183 / 57%);
+
+    svg {
+        margin-left: 10px
+    }
+
+ 
+        &:hover {
+        background-color: rgb(103 58 183 / 57%);  
+    }
+    
+    
+}

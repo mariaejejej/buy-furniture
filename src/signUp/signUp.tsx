@@ -73,7 +73,7 @@ export const SignUp = () => {
 
         dispatch(addUser(newUser))
         event.preventDefault();
-        navigate("/", { replace: true })
+        navigate("/login", { replace: true })
     }
     return (
         <Grid

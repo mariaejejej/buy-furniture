@@ -1,0 +1,81 @@
+// Unpublished Work © 2019-2023 Deere & Company
+
+
+
+$border-width: 1px;
+
+@mixin selector-button() {
+    align-items: center;
+    background: white;
+    display: inline-flex;
+    height: 100%;
+    justify-content: center;
+    margin: 0;
+    outline: none;
+    border: 1px solid gray;
+
+    &:hover {
+        background: rgb(103 58 183 / 28%);;
+        z-index: 2;
+    }
+}
+
+.quantitySelector {
+    height: 40px;
+    width: 110px
+}
+
+.input {
+    width: 110px - (32px * 2);
+}
+
+.incrementer {
+    width: 32px
+}
+
+.decrementer {
+    width: 32px
+}
+
+.quantitySelector {
+    background-color: white;
+    display: flex;
+
+    .incrementer {
+        @include selector-button();
+
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1px;
+    }
+
+    .decrementer {
+        @include selector-button();
+
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-right: -1px;
+    }
+}
+
+.inputWrapper {
+    z-index: 1;
+    text-align: center;
+
+    .input {
+        background-color: transparent;
+        border-radius: 0;
+        border: 1px solid gray;
+        display: inline-flex;
+        padding-left: 16px;
+        height: 100%;
+
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            display: none;
+        }
+
+
+    }
+}

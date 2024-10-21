@@ -25,7 +25,7 @@ const FilterTabs = () => {
             setSelectedTab(pages[0].value)
         }
         else {
-            const newList = imgList.filter((img) => img.category.toLowerCase().includes(newValue.toLowerCase()))
+            const newList = imgList.filter((img) => img.category?.toLowerCase().includes(newValue.toLowerCase()))
             dispatch(setImgListFiltered(newList))
             setSelectedTab(newValue)
         }

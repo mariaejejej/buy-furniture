@@ -11,7 +11,7 @@ export type imgItem = {
   img: string,
   title: string,
   author: string,
-  category: string,
+  category?: string,
   ratingValue: number,
   price: string
 };
@@ -20,7 +20,8 @@ export type state = {
   imgList: imgItem[],
   imgListFiltered: imgItem[],
   users: user[],
-  userLoged?: user
+  userLoged?: user,
+  itemsShoppingCart: number
 }
 const itemData:imgItem[]  = [
   {
@@ -56,7 +57,7 @@ const itemData:imgItem[]  = [
     price: (Math.random() * 1000).toFixed(2)
   },
   {
-    img: 'https://m.media-amazon.com/images/I/81Foum06q6L._AC_UF894,1000_QL80_.jpg',
+    img: 'https://i.ebayimg.com/images/g/9nkAAOSwLAplsL7M/s-l1200.jpg',
     title: 'Modern Book Shelf',
     author: '@bkristastucchio',
     category: 'office',
@@ -74,14 +75,14 @@ const itemData:imgItem[]  = [
   },
   {
     img: 'https://m.media-amazon.com/images/I/81zYWf9m3CL._AC_UF894,1000_QL80_.jpg',
-    title: 'Book Shelve',
+    title: 'Book Shelf',
     author: '@bkristastucchio',
     category: 'office',
     ratingValue: Math.round(Math.random() * 5),
     price: (Math.random() * 1000).toFixed(2)
   },
   {
-    img: 'https://westcoastmodernla.com/cdn/shop/products/IMG_7948-rotated_f21f9e48-79e2-44ac-a071-635aecc7f872.jpg?v=1684339755',
+    img: 'https://m.media-amazon.com/images/I/71q32o2in-L._AC_UF894,1000_QL80_.jpg',
     title: 'Modern Chair',
     author: '@bkristastucchio',
     category: 'office',
@@ -106,7 +107,7 @@ const itemData:imgItem[]  = [
   },
 
   {
-    img: 'https://m.media-amazon.com/images/I/8191zaQ4qIL.jpg',
+    img: 'https://images.thdstatic.com/productImages/a4348bcd-c67a-444a-aaac-e0ac545d4d3a/svn/black-harper-bright-designs-dressers-yjh032aab-64_600.jpg',
     title: 'Black Dresser',
     author: '@bkristastucchio',
     category: 'bedroom',
@@ -126,5 +127,6 @@ export const getDefaultState = (): state => ({
   imgList: itemData,
   imgListFiltered: itemData,
   users: [],
-  userLoged: undefined
+  userLoged: undefined,
+  itemsShoppingCart: 0
 })

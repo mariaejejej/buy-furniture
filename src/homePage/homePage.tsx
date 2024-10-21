@@ -12,7 +12,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ListItemIcon, Tab, Tabs } from '@mui/material';
+import { Badge, ListItemIcon, Tab, Tabs } from '@mui/material';
 import { Logo } from './logo/logo.tsx';
 import { ImageListC } from './imageList/imageList.tsx';
 import { SearchBar } from './search/searchBar.tsx';
@@ -23,7 +23,9 @@ import styles from './homePage.module.scss'
 import classNames from 'classnames';
 import FilterTabs from './tabs/filterTabs.tsx';
 import { Footer } from './footer/footer.tsx';
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from 'react-redux';
+import { state } from '../redux/state/state.ts';
 const pages = [
     { value: 'allProducts', label: 'All Products' },
     { value: 'bedroom', label: 'Bedroom' },
@@ -33,6 +35,7 @@ const pages = [
 
 export const HomePage = () => {
     const navigate = useNavigate()
+    const itemsShoppingCart = useSelector((state: state) => state.itemsShoppingCart)
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -96,7 +99,7 @@ export const HomePage = () => {
                 <Toolbar disableGutters className={classNames(styles.toolBar)} >
                     {isMobile ? <>
                         <SearchBar />
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <Box sx={{ flexGrow: 2, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
@@ -172,6 +175,12 @@ export const HomePage = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
+                    </Box>
+                    <Box sx={{ flexGrow: 1, marginLeft: '15px' }}>
+                        <Badge badgeContent={itemsShoppingCart} color="secondary">
+                            < ShoppingCartIcon />
+                        </Badge>
+
                     </Box>
                 </Toolbar>
             </AppBar>
